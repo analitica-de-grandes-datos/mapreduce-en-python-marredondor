@@ -20,4 +20,4 @@ for line in lines:
         credit_history = fields[2]
 
         # Emite el par clave-valor al stdout
-        print(f'{credit_history}\t1')
+        sys.stdout.write(credit_history+"\t1\n")
