@@ -1,24 +1,40 @@
 import sys
 
-# Inicializar el diccionario para almacenar los conteos de credit_history
-credit_counts = {}
+#
+# Esta funcion reduce los elementos que tienen la misma clave
+#
+if _name_ == '_main_':
 
-# Leer los datos de la entrada estándar
-for line in sys.stdin:
-    # Eliminar espacios en blanco y dividir la línea en clave y valor
-    credit_history, count = line.strip().split('\t')
+    curkey = None
+    total = 0
 
-    # Convertir el conteo a entero
-    count = int(count)
+    #
+    # cada linea de texto recibida es una entrada clave \tabulador valor
+    #
+    for line in sys.stdin:
 
-    # Incrementar el contador para el tipo de credit_history actual
-    if credit_history in credit_counts:
-        credit_counts[credit_history] += count
-    else:
-        credit_counts[credit_history] = count
+        key, val = line.split("\t")
+        val = int(val)
 
-# Imprimir los resultados
+        if key == curkey:
+            #
+            # No se ha cambiado de clave. Aca se acumulan los valores para la misma
+            # clave.
+            #
+            total += val
+        else:
+            #
+            # Se cambio de clave. Se reinicia el acumulador.
+            #
+            if curkey is not None:
+                #
+                # una vez se han reducido todos los elementos
+                # con la misma clave se imprime el resultado en
+                # el flujo de salida
+                #
+                sys.stdout.write("{}\t{}\n".format(curkey, total))
 
-for credit_history in sorted(credit_counts.keys()):
-    count = credit_counts[credit_history]
-    sys.stdout.write("{}\t{}\n".format(credit_history, count))
+            curkey = key
+            total = val
+
+    sys.stdout.write("{}\t{}\n".format(curkey, total))
