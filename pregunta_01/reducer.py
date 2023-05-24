@@ -1,25 +1,27 @@
 import sys
 
-current_credit_history = None
-credit_history_count = 0
+# Inicializar el diccionario para almacenar los conteos de credit_history
+credit_counts = {}
 
-# Itera sobre las líneas de entrada
+#credit_counts['credit_history'] = 1
+
+# Leer los datos de la entrada estándar
 for line in sys.stdin:
-    # Elimina espacios en blanco y divide por tabulaciones
+    # Eliminar espacios en blanco y dividir la línea en clave y valor
     credit_history, count = line.strip().split('\t')
     
-    # Si es la misma clave que antes, incrementa el contador
-    if current_credit_history == credit_history:
-        credit_history_count += int(count)
+    # Convertir el conteo a entero
+    count = int(count)
+    
+    # Incrementar el contador para el tipo de credit_history actual
+    if credit_history in credit_counts:
+        credit_counts[credit_history] += count
     else:
-        # Si es una clave diferente, imprime el resultado del atributo anterior (si no es None)
-        if current_credit_history is not None:
-            print(current_credit_history + '\t' + str(credit_history_count))
-        
-        # Reinicia las variables para la nueva clave
-        current_credit_history = credit_history
-        credit_history_count = int(count)
+        credit_counts[credit_history] = count
 
-# Imprime el resultado para la última clave
-if current_credit_history is not None:
-    print(current_credit_history + '\t' + str(credit_history_count))
+# Ordenar los resultados por clave (credit_history)
+sorted_counts = sorted(credit_counts.items())
+
+# Imprimir los resultados
+for credit_history, count in sorted_counts:
+    print(f'{credit_history}\t{count}')
