@@ -1,12 +1,24 @@
 import sys
+import csv
 
-# Itera sobre las líneas de entrada
-for line in sys.stdin:
-    # Elimina espacios en blanco y divide por comas
-    data = line.strip().split(',')
-    
-    # Extrae el valor del atributo "credit_history" (suponiendo que es el tercer atributo)
-    credit_history = data[2]
-    
-    # Genera la salida en formato clave-valor: (credit_history, 1)
-    print(credit_history + '\t' + '1')
+# Leer el archivo CSV desde la entrada estándar
+reader = csv.reader(sys.stdin)
+
+# Obtener los encabezados
+headers = next(reader)
+
+# Obtener el índice del atributo 'credit_history'
+credit_history_index = headers.index('credit_history')
+
+# Emitir el nombre de la columna como un registro
+print('credit_history\t1')
+
+# Iterar sobre cada línea de entrada
+for row in reader:
+    # Verificar si la fila tiene el número correcto de campos
+    if len(row) == len(headers):
+        # Obtener el valor del atributo 'credit_history'
+        credit_history = row[credit_history_index]
+        
+        # Emitir el par clave-valor al stdout
+        print(f'{credit_history}\t1')
