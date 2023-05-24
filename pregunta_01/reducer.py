@@ -18,5 +18,7 @@ for line in sys.stdin:
         credit_counts[credit_history] = count
 
 # Imprimir los resultados
-for credit_history, count in credit_counts.items():
-    print(f'{credit_history}\t{count}')
+
+for credit_history in sorted(credit_counts.keys()):
+    count = credit_counts[credit_history]
+    sys.stdout.write("{}\t{}\n".format(credit_history, count))
