@@ -20,5 +20,5 @@ for line in sys.stdin:
 # Imprimir los resultados
 
 for credit_history in sorted(credit_counts.keys()):
-    count = credit_counts[credit_history]
-    sys.stdout.write("{}\t{}\n".format(credit_history, count))
+    count = credit_counts[credit_history]    
+    sys.stdout.write("{},{}\n".format(credit_history, count))
