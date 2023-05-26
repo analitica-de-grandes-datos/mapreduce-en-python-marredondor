@@ -1,4 +1,3 @@
-%%writefile reducer.py
 import sys
 
 #
