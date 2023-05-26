@@ -1,6 +1,24 @@
 import sys
-if __name__ == "__main__":
-  for line in sys.stdin:
-    ch = line.strip()
-    ch = ch.split(',')
-    sys.stdout.write("{}\t1\n".format(ch[2]))
+
+# Leer el contenido de la entrada estándar
+data = sys.stdin.read()
+
+# Eliminar saltos de línea adicionales
+data = data.strip()
+
+# Dividir el contenido en líneas
+lines = data.split('\n')
+
+# Iterar sobre cada línea de entrada
+for line in lines:
+    # Elimina espacios en blanco y divide la línea en campos
+    fields = line.strip().split(',')
+
+    # Verifica si la línea tiene el número correcto de campos
+    if len(fields) == 21:
+        # Obtiene el valor del atributo 'credit_history'
+        credit_history = fields[2]
+
+        # Emite el par clave-valor al stdout
+        sys.stdout.write(credit_history+"\t1\n")
+        #print(f'{credit_history}\t1')
