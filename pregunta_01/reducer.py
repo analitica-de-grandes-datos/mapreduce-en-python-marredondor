@@ -3,7 +3,7 @@ import sys
 #
 # Esta funcion reduce los elementos que tienen la misma clave
 #
-if _name_ == '_main_':
+if __name__ == '_main_':
 
     curkey = None
     total = 0
