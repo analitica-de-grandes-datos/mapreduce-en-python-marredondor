@@ -7,7 +7,7 @@ for line in sys.stdin:
     datos.append(columnas)
 
 # Ordenar la lista por letra (columna 1) y valor (columna 3)
-organizar = sorted(datos, key=lambda x: (x[0], float(x[2])))
+organizar = sorted(datos, key=lambda x: (x[0], int((x[2]))))
 
 # Imprimir los resultados
 for item in organizar:
