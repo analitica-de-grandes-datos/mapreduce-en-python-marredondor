@@ -1,8 +1,15 @@
 import sys
 
-for line in sys.stdin:
-    columnas=line.split(" ")
-    columna1= columnas[0]
-    columna2= columnas[3]
-    columna3= int(columnas[6])
-    sys.stdout.write(f"{columna1}\t{columna2}\t{columna3}\n")
+# Iterar sobre cada línea de entrada
+for row in sys.stdin:
+    # Eliminar espacios en blanco y dividir la línea en campos
+    campos = row.strip().split()
+
+    # Verificar si la línea tiene el número correcto de campos
+    if len(campos) == 3:
+        clave = campos[0]
+        fecha = campos[1]
+        valor = int(campos[2])
+
+        # Emitir el par clave-valor al stdout
+        sys.stdout.write("{}\t{}\t{}\n".format(clave, fecha, valor))
