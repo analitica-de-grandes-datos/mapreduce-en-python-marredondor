@@ -9,7 +9,7 @@ for row in sys.stdin:
     if len(campos) == 3:
         clave = campos[0]
         fecha = campos[1]
-        valor = float(campos[2])
+        valor = int(campos[2])
 
         # Emitir el par clave-valor al stdout
         sys.stdout.write("{}\t{}\t{}\n".format(clave, fecha, valor))
