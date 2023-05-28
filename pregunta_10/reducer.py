@@ -25,8 +25,5 @@ list_of_lists = sorted(list_of_lists, key=lambda x: (x[0], x[1]))
 # Agrupar las sublistas por el primer elemento y crear una nueva lista de tuplas
 nuevalista = [(k, list([e[1] for e in g])) for k, g in groupby(list_of_lists, lambda x: x[0])]
 
-print(nuevalista)
-
-# Emitir los pares clave-valor al stdout en el formato requerido
 for pareja in nuevalista:
-    sys.stdout.write("{}\t{}\n".format(str(pareja[0]), str(pareja[1]).replace('[','').replace(']','').replace(' ','')))
+    sys.stdout.write("{}	{}\n".format(str(pareja[0]), str(pareja[1]).replace('[','').replace(']', '').replace(' ','')))
