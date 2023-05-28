@@ -11,7 +11,4 @@ organizar = sorted(datos, key=lambda x: (x[0], int((x[2]))))
 
 # Imprimir los resultados
 for item in organizar:
-    sys.stdout.write("{}\t{}\t{}\n".format(item[0], item[1], item[2]))
-    
-# Agregar las líneas adicionales
-sys.stdout.write("")
+    sys.stdout.write("{}   {}   {}\t\n".format(item[0], item[1],item[2]))
